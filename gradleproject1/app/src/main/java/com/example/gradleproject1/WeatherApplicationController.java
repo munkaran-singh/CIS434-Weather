@@ -321,40 +321,40 @@ public class WeatherApplicationController {
         tempHourFourString= String.valueOf(currentWeatherSearch.hourlyTemperature.get(3))+String.valueOf(currentWeatherSearch.currentWeatherUnits.get("temperature_2m"));
         tempHourFiveString= String.valueOf(currentWeatherSearch.hourlyTemperature.get(4))+String.valueOf(currentWeatherSearch.currentWeatherUnits.get("temperature_2m"));
         //Right Pane +0 Days
-        highLowTodayString= String.valueOf(currentWeatherSearch.dailyMaxTemp.get(0))+String.valueOf(currentWeatherSearch.currentWeatherUnits.get("temperature_2m"))+"/"+String.valueOf(currentWeatherSearch.dailyMinTemp.get(0))+String.valueOf(currentWeatherSearch.currentWeatherUnits.get("temperature_2m"));
-        precipitationTodayString= String.valueOf(currentWeatherSearch.dailyPrecipitationProbability.get(0))+String.valueOf(currentWeatherSearch.dailyWeatherUnits.get("precipitation_probability_max"));
-        sunriseTodayString= "Sunrise: "+currentWeatherSearch.parseTime(String.valueOf(currentWeatherSearch.dailySunrise.get(0)));
-        sunsetTodayString= "Sunset: "+currentWeatherSearch.parseTime(String.valueOf(currentWeatherSearch.dailySunset.get(0)));
+        highLowTodayString= String.valueOf(currentWeatherSearch.dailyMaxTemp.get(7))+String.valueOf(currentWeatherSearch.currentWeatherUnits.get("temperature_2m"))+"/"+String.valueOf(currentWeatherSearch.dailyMinTemp.get(7))+String.valueOf(currentWeatherSearch.currentWeatherUnits.get("temperature_2m"));
+        precipitationTodayString= String.valueOf(currentWeatherSearch.dailyPrecipitationProbability.get(7))+String.valueOf(currentWeatherSearch.dailyWeatherUnits.get("precipitation_probability_max"));
+        sunriseTodayString= "Sunrise: "+currentWeatherSearch.parseTime(String.valueOf(currentWeatherSearch.dailySunrise.get(7)));
+        sunsetTodayString= "Sunset: "+currentWeatherSearch.parseTime(String.valueOf(currentWeatherSearch.dailySunset.get(7)));
         //Right Pane +1 Day
-        highLow1String= String.valueOf(currentWeatherSearch.dailyMaxTemp.get(1))+String.valueOf(currentWeatherSearch.currentWeatherUnits.get("temperature_2m"))+"/"+String.valueOf(currentWeatherSearch.dailyMinTemp.get(1))+String.valueOf(currentWeatherSearch.currentWeatherUnits.get("temperature_2m"));
-        precipitation1String= String.valueOf(currentWeatherSearch.dailyPrecipitationProbability.get(1))+String.valueOf(currentWeatherSearch.dailyWeatherUnits.get("precipitation_probability_max"));
-        sunrise1String= "Sunrise: "+currentWeatherSearch.parseTime(String.valueOf(currentWeatherSearch.dailySunrise.get(1)));
-        sunset1String= "Sunset: "+currentWeatherSearch.parseTime(String.valueOf(currentWeatherSearch.dailySunset.get(1)));
+        highLow1String= String.valueOf(currentWeatherSearch.dailyMaxTemp.get(8))+String.valueOf(currentWeatherSearch.currentWeatherUnits.get("temperature_2m"))+"/"+String.valueOf(currentWeatherSearch.dailyMinTemp.get(8))+String.valueOf(currentWeatherSearch.currentWeatherUnits.get("temperature_2m"));
+        precipitation1String= String.valueOf(currentWeatherSearch.dailyPrecipitationProbability.get(8))+String.valueOf(currentWeatherSearch.dailyWeatherUnits.get("precipitation_probability_max"));
+        sunrise1String= "Sunrise: "+currentWeatherSearch.parseTime(String.valueOf(currentWeatherSearch.dailySunrise.get(8)));
+        sunset1String= "Sunset: "+currentWeatherSearch.parseTime(String.valueOf(currentWeatherSearch.dailySunset.get(8)));
         //Right Pane +2 Days
-        highLow2String= String.valueOf(currentWeatherSearch.dailyMaxTemp.get(2))+String.valueOf(currentWeatherSearch.currentWeatherUnits.get("temperature_2m"))+"/"+String.valueOf(currentWeatherSearch.dailyMinTemp.get(2))+String.valueOf(currentWeatherSearch.currentWeatherUnits.get("temperature_2m"));
-        precipitation2String= String.valueOf(currentWeatherSearch.dailyPrecipitationProbability.get(2))+String.valueOf(currentWeatherSearch.dailyWeatherUnits.get("precipitation_probability_max"));
-        sunrise2String= "Sunrise: "+currentWeatherSearch.parseTime(String.valueOf(currentWeatherSearch.dailySunrise.get(2)));
-        sunset2String= "Sunset: "+currentWeatherSearch.parseTime(String.valueOf(currentWeatherSearch.dailySunset.get(2)));
+        highLow2String= String.valueOf(currentWeatherSearch.dailyMaxTemp.get(9))+String.valueOf(currentWeatherSearch.currentWeatherUnits.get("temperature_2m"))+"/"+String.valueOf(currentWeatherSearch.dailyMinTemp.get(9))+String.valueOf(currentWeatherSearch.currentWeatherUnits.get("temperature_2m"));
+        precipitation2String= String.valueOf(currentWeatherSearch.dailyPrecipitationProbability.get(9))+String.valueOf(currentWeatherSearch.dailyWeatherUnits.get("precipitation_probability_max"));
+        sunrise2String= "Sunrise: "+currentWeatherSearch.parseTime(String.valueOf(currentWeatherSearch.dailySunrise.get(9)));
+        sunset2String= "Sunset: "+currentWeatherSearch.parseTime(String.valueOf(currentWeatherSearch.dailySunset.get(9)));
         //Right Pane +3 Days
-        highLow3String= String.valueOf(currentWeatherSearch.dailyMaxTemp.get(3))+String.valueOf(currentWeatherSearch.currentWeatherUnits.get("temperature_2m"))+"/"+String.valueOf(currentWeatherSearch.dailyMinTemp.get(3))+String.valueOf(currentWeatherSearch.currentWeatherUnits.get("temperature_2m"));
-        precipitation3String= String.valueOf(currentWeatherSearch.dailyPrecipitationProbability.get(3))+String.valueOf(currentWeatherSearch.dailyWeatherUnits.get("precipitation_probability_max"));
-        sunrise3String= "Sunrise: "+currentWeatherSearch.parseTime(String.valueOf(currentWeatherSearch.dailySunrise.get(3)));
-        sunset3String= "Sunset: "+currentWeatherSearch.parseTime(String.valueOf(currentWeatherSearch.dailySunset.get(3)));
+        highLow3String= String.valueOf(currentWeatherSearch.dailyMaxTemp.get(10))+String.valueOf(currentWeatherSearch.currentWeatherUnits.get("temperature_2m"))+"/"+String.valueOf(currentWeatherSearch.dailyMinTemp.get(10))+String.valueOf(currentWeatherSearch.currentWeatherUnits.get("temperature_2m"));
+        precipitation3String= String.valueOf(currentWeatherSearch.dailyPrecipitationProbability.get(10))+String.valueOf(currentWeatherSearch.dailyWeatherUnits.get("precipitation_probability_max"));
+        sunrise3String= "Sunrise: "+currentWeatherSearch.parseTime(String.valueOf(currentWeatherSearch.dailySunrise.get(10)));
+        sunset3String= "Sunset: "+currentWeatherSearch.parseTime(String.valueOf(currentWeatherSearch.dailySunset.get(10)));
         //Right Pane +4 Days
-        highLow4String= String.valueOf(currentWeatherSearch.dailyMaxTemp.get(4))+String.valueOf(currentWeatherSearch.currentWeatherUnits.get("temperature_2m"))+"/"+String.valueOf(currentWeatherSearch.dailyMinTemp.get(4))+String.valueOf(currentWeatherSearch.currentWeatherUnits.get("temperature_2m"));
-        precipitation4String= String.valueOf(currentWeatherSearch.dailyPrecipitationProbability.get(4))+String.valueOf(currentWeatherSearch.dailyWeatherUnits.get("precipitation_probability_max"));
-        sunrise4String= "Sunrise: "+currentWeatherSearch.parseTime(String.valueOf(currentWeatherSearch.dailySunrise.get(4)));
-        sunset4String= "Sunset: "+currentWeatherSearch.parseTime(String.valueOf(currentWeatherSearch.dailySunset.get(4)));
+        highLow4String= String.valueOf(currentWeatherSearch.dailyMaxTemp.get(11))+String.valueOf(currentWeatherSearch.currentWeatherUnits.get("temperature_2m"))+"/"+String.valueOf(currentWeatherSearch.dailyMinTemp.get(11))+String.valueOf(currentWeatherSearch.currentWeatherUnits.get("temperature_2m"));
+        precipitation4String= String.valueOf(currentWeatherSearch.dailyPrecipitationProbability.get(11))+String.valueOf(currentWeatherSearch.dailyWeatherUnits.get("precipitation_probability_max"));
+        sunrise4String= "Sunrise: "+currentWeatherSearch.parseTime(String.valueOf(currentWeatherSearch.dailySunrise.get(11)));
+        sunset4String= "Sunset: "+currentWeatherSearch.parseTime(String.valueOf(currentWeatherSearch.dailySunset.get(11)));
         //Right Pane +5Days
-        highLow5String= String.valueOf(currentWeatherSearch.dailyMaxTemp.get(5))+String.valueOf(currentWeatherSearch.currentWeatherUnits.get("temperature_2m"))+"/"+String.valueOf(currentWeatherSearch.dailyMinTemp.get(5))+String.valueOf(currentWeatherSearch.currentWeatherUnits.get("temperature_2m"));
-        precipitation5String= String.valueOf(currentWeatherSearch.dailyPrecipitationProbability.get(5))+String.valueOf(currentWeatherSearch.dailyWeatherUnits.get("precipitation_probability_max"));
-        sunrise5String= "Sunrise: "+currentWeatherSearch.parseTime(String.valueOf(currentWeatherSearch.dailySunrise.get(5)));
-        sunset5String= "Sunset: "+currentWeatherSearch.parseTime(String.valueOf(currentWeatherSearch.dailySunset.get(5)));
+        highLow5String= String.valueOf(currentWeatherSearch.dailyMaxTemp.get(12))+String.valueOf(currentWeatherSearch.currentWeatherUnits.get("temperature_2m"))+"/"+String.valueOf(currentWeatherSearch.dailyMinTemp.get(12))+String.valueOf(currentWeatherSearch.currentWeatherUnits.get("temperature_2m"));
+        precipitation5String= String.valueOf(currentWeatherSearch.dailyPrecipitationProbability.get(12))+String.valueOf(currentWeatherSearch.dailyWeatherUnits.get("precipitation_probability_max"));
+        sunrise5String= "Sunrise: "+currentWeatherSearch.parseTime(String.valueOf(currentWeatherSearch.dailySunrise.get(12)));
+        sunset5String= "Sunset: "+currentWeatherSearch.parseTime(String.valueOf(currentWeatherSearch.dailySunset.get(12)));
         //Right Pane +6 Days
-        highLow6String= String.valueOf(currentWeatherSearch.dailyMaxTemp.get(6))+String.valueOf(currentWeatherSearch.currentWeatherUnits.get("temperature_2m"))+"/"+String.valueOf(currentWeatherSearch.dailyMinTemp.get(6))+String.valueOf(currentWeatherSearch.currentWeatherUnits.get("temperature_2m"));
-        precipitation6String= String.valueOf(currentWeatherSearch.dailyPrecipitationProbability.get(6))+String.valueOf(currentWeatherSearch.dailyWeatherUnits.get("precipitation_probability_max"));
-        sunrise6String= "Sunrise: "+currentWeatherSearch.parseTime(String.valueOf(currentWeatherSearch.dailySunrise.get(6)));
-        sunset6String= "Sunset: "+currentWeatherSearch.parseTime(String.valueOf(currentWeatherSearch.dailySunset.get(6)));
+        highLow6String= String.valueOf(currentWeatherSearch.dailyMaxTemp.get(13))+String.valueOf(currentWeatherSearch.currentWeatherUnits.get("temperature_2m"))+"/"+String.valueOf(currentWeatherSearch.dailyMinTemp.get(13))+String.valueOf(currentWeatherSearch.currentWeatherUnits.get("temperature_2m"));
+        precipitation6String= String.valueOf(currentWeatherSearch.dailyPrecipitationProbability.get(13))+String.valueOf(currentWeatherSearch.dailyWeatherUnits.get("precipitation_probability_max"));
+        sunrise6String= "Sunrise: "+currentWeatherSearch.parseTime(String.valueOf(currentWeatherSearch.dailySunrise.get(13)));
+        sunset6String= "Sunset: "+currentWeatherSearch.parseTime(String.valueOf(currentWeatherSearch.dailySunset.get(13)));
         updateWeatherInfo(cityNameString);
     }
 
