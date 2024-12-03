@@ -25,6 +25,15 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.Image;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.fxml.FXML;
+import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
+import javafx.scene.control.Alert;
+import java.util.ArrayList;
+import java.util.List;
+
 public class WeatherApplicationController {
 
     @FXML
@@ -110,6 +119,9 @@ public class WeatherApplicationController {
 
     @FXML
     private Button searchButton;
+    
+    @FXML
+    private Button saveButton;
 
     @FXML
     private Text sunrise1;
@@ -178,12 +190,58 @@ public class WeatherApplicationController {
     private ImageView weatherImage;
     
     @FXML
+    private Text dayFive;
+
+    @FXML
+    private Text dayFour;
+
+    @FXML
+    private Text dayOne;
+
+    @FXML
+    private Text daySix;
+
+    @FXML
+    private Text dayThree;
+
+    @FXML
+    private Text dayTwo;
+    
+    @FXML
+    private Text timeCurrent;
+
+    @FXML
+    private Text timeFive;
+
+    @FXML
+    private Text timeFour;
+
+    @FXML
+    private Text timeOne;
+
+    @FXML
+    private Text timeThree;
+
+    @FXML
+    private Text timeTwo;
+    
+    @FXML
     private ListView<String> savedList;
     private ObservableList<String> recentSearches = FXCollections.observableArrayList();
-   
+
+    @FXML
     private void initialize() {
-        savedList.setItems(recentSearches); // Bind the ListView to the ObservableList
+        savedList.setItems(recentSearches);
+
+        savedList.setOnMouseClicked(event -> {
+            String selectedCity = savedList.getSelectionModel().getSelectedItem();
+            if (selectedCity != null) {
+                cityInput.setText(selectedCity);
+                System.out.println("Selected city: " + selectedCity);
+            }
+        });
     }
+    
     //Left Pane
     String humidityPercentString;
     String windDirectionString;
@@ -241,7 +299,26 @@ public class WeatherApplicationController {
     String precipitation6String;
     String sunrise6String;
     String sunset6String;
+    
+    @FXML
+    private void handleSave(ActionEvent event) {
+        if (cityNameString == null || cityNameString.isEmpty()) {
+            System.out.println("No search result to save.");
+            return;
+        }
+        if (!recentSearches.contains(cityNameString)) {
+            recentSearches.add(cityNameString);
+            initialize(); 
+        }
 
+
+        if (recentSearches.size() > 10) {
+            recentSearches.remove(0);
+        }
+
+        System.out.println("Saved " + cityNameString + " to recent searches.");
+    }
+    
     @FXML
     private void handleSearch(ActionEvent event) {
         weatherObject defaulttt = new weatherObject();
@@ -252,21 +329,9 @@ public class WeatherApplicationController {
         
         
          if (cityNameString.isEmpty() || !defaulttt.getLocation(cityNameString).toString().contains("elevation")) {
+            showAlert("Invalid Entry", "Please enter a valid city name or ZIP code.");
             System.out.println("MAIN: Please enter a valid city name/zip");
             return;
-        }
-
-        // Add location to recent searches if not already present
-        if (!recentSearches.contains(cityNameString)) {
-
-            recentSearches.add(cityNameString);
-            initialize();
-        }
-
-        // Limit the list to the last 10 searches
-        if (recentSearches.size() > 10) {
-
-            recentSearches.remove(0);
         }
 
         weatherObject currentWeatherSearch = new weatherObject(cityNameString);
@@ -356,6 +421,14 @@ public class WeatherApplicationController {
         sunrise6String= "Sunrise: "+currentWeatherSearch.parseTime(String.valueOf(currentWeatherSearch.dailySunrise.get(13)));
         sunset6String= "Sunset: "+currentWeatherSearch.parseTime(String.valueOf(currentWeatherSearch.dailySunset.get(13)));
         updateWeatherInfo(cityNameString);
+    }
+    
+    private void showAlert(String title, String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 
     private void updateWeatherInfo(String location) {
