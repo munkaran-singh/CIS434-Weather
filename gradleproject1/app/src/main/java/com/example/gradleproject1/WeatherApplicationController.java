@@ -313,6 +313,24 @@ public class WeatherApplicationController {
     String rainNight = "/image/rainNight.png";
     String snowDay = "/image/snowdaypng";
     String snowNight = "/image/snowNight.png";
+    /*
+    //Center Pane
+    String currentConditionString;
+    //Center Pane Times
+    String timeCurrentString;
+    String timeOneString;    
+    String timeTwoString;    
+    String timeThreeString;    
+    String timeFourString;
+    String timeFiveString;
+    //Right Pane Days
+    String dayOneString;
+    String dayTwoString;
+    String dayThreeString;
+    String dayFourString;
+    String dayFiveString;
+    String daySixString;
+    */
     
     @FXML
     private void handleSave(ActionEvent event) {
@@ -669,5 +687,36 @@ public class WeatherApplicationController {
         sunrise6.setText(text);}
     private void updateSunset6(String text) {
         sunset6.setText(text);}
+    /*
+    //Center Pane Current Condition
+    private void updateCurrentCondition(String text) {
+        currentCondition.setText(text);}
+    //Center Pane Times
+    private void updateTimeCurrent(String text) {
+        timeCurrent.setText(text);}
+    private void updateTimeOne(String text) {
+        timeOne.setText(text);}
+    private void updateTimeTwo(String text) {
+        timeTwo.setText(text);}
+    private void updateTimeThree(String text) {
+        timeThree.setText(text);}
+    private void updateTimeFour(String text) {
+        timeFour.setText(text);}
+    private void updateTimeFive(String text) {
+        timeFive.setText(text);}
+    //Right Pane Days
+    private void updateDayOne(String text) {
+        dayOne.setText(text);}
+    private void updateDayTeo(String text) {
+        dayTwo.setText(text);}
+    private void updateDayThree(String text) {
+        dayThree.setText(text);}
+    private void updateDayFour(String text) {
+        dayFour.setText(text);}
+    private void updateDayFive(String text) {
+        dayFive.setText(text);}
+    private void updateDaySix(String text) {
+        daySix.setText(text);}
+    */
 
 }
