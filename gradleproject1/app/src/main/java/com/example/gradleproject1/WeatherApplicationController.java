@@ -313,7 +313,6 @@ public class WeatherApplicationController {
     String rainNight = "/image/rainNight.png";
     String snowDay = "/image/snowdaypng";
     String snowNight = "/image/snowNight.png";
-    /*
     //Center Pane
     String currentConditionString;
     //Center Pane Times
@@ -330,7 +329,6 @@ public class WeatherApplicationController {
     String dayFourString;
     String dayFiveString;
     String daySixString;
-    */
     
     @FXML
     private void handleSave(ActionEvent event) {
@@ -580,6 +578,22 @@ public class WeatherApplicationController {
         updatePrecipitation6(precipitation6String);
         updateSunrise6(sunrise6String);
         updateSunset6(sunset6String);
+        //Center Pane Current Condition
+        updateCurrentCondition(currentConditionString);
+        //Center Pane Times
+        updateTimeCurrent(timeCurrentString);
+        updateTimeOne(timeOneString);
+        updateTimeTwo(timeTwoString);
+        updateTimeThree(timeThreeString);
+        updateTimeFour(timeFourString);
+        updateTimeFive(timeFiveString);
+        //Right Pane Days
+        updateDayOne(dayOneString);
+        updateDayTwo(dayTwoString);
+        updateDayThree(dayThreeString);
+        updateDayFour(dayFourString);
+        updateDayFive(dayFiveString);
+        updateDaySix(daySixString);
     }
     
     //Left Pane
@@ -687,7 +701,6 @@ public class WeatherApplicationController {
         sunrise6.setText(text);}
     private void updateSunset6(String text) {
         sunset6.setText(text);}
-    /*
     //Center Pane Current Condition
     private void updateCurrentCondition(String text) {
         currentCondition.setText(text);}
@@ -707,7 +720,7 @@ public class WeatherApplicationController {
     //Right Pane Days
     private void updateDayOne(String text) {
         dayOne.setText(text);}
-    private void updateDayTeo(String text) {
+    private void updateDayTwo(String text) {
         dayTwo.setText(text);}
     private void updateDayThree(String text) {
         dayThree.setText(text);}
@@ -717,6 +730,5 @@ public class WeatherApplicationController {
         dayFive.setText(text);}
     private void updateDaySix(String text) {
         daySix.setText(text);}
-    */
 
 }
