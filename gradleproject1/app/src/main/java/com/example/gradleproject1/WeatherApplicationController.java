@@ -40,6 +40,9 @@ public class WeatherApplicationController {
     private Text cityName;
 
     @FXML
+    private Text currentCondition;
+
+    @FXML
     private TextField cityInput;
     
     @FXML
@@ -234,11 +237,11 @@ public class WeatherApplicationController {
         savedList.setItems(recentSearches);
 
         savedList.setOnMouseClicked(event -> {
-            String selectedCity = savedList.getSelectionModel().getSelectedItem();
-            if (selectedCity != null) {
-                cityInput.setText(selectedCity);
-                System.out.println("Selected city: " + selectedCity);
+            if(event.getClickCount()==2){
+                String selectedCity = savedList.getSelectionModel().getSelectedItem();
+                TheMainSearchFunction(selectedCity);
             }
+
         });
     }
     
@@ -248,7 +251,9 @@ public class WeatherApplicationController {
     String windSpeedString;
     String feelsLikeString;
     //Center Pane Top
+    String cityNameInput;
     String cityNameString;
+    String currentWeatherConditionsforImage;
     //Center Pane Hourly Precipitation
     String precipitationString; //used for left pane as well
     String precipitationHourOneString;
@@ -299,16 +304,25 @@ public class WeatherApplicationController {
     String precipitation6String;
     String sunrise6String;
     String sunset6String;
+    //images
+    String clearDay = "/image/clearDay.png";
+    String clearNight = "/image/clearNight.png";
+    String cloudDay = "/image/cloudDay.png";
+    String cloudNight = "/image/cloudNight.png";
+    String rainDay = "/image/rainDay.png";
+    String rainNight = "/image/rainNight.png";
+    String snowDay = "/image/snowdaypng";
+    String snowNight = "/image/snowNight.png";
     
     @FXML
     private void handleSave(ActionEvent event) {
-        if (cityNameString == null || cityNameString.isEmpty()) {
+        if (cityNameInput == null || cityNameInput.isEmpty()) {
             System.out.println("No search result to save.");
             return;
         }
-        if (!recentSearches.contains(cityNameString)) {
-            recentSearches.add(cityNameString);
-            initialize(); 
+        if (!recentSearches.contains(cityNameInput)) {
+            recentSearches.add(cityNameInput);
+            initialize();
         }
 
 
@@ -316,25 +330,31 @@ public class WeatherApplicationController {
             recentSearches.remove(0);
         }
 
-        System.out.println("Saved " + cityNameString + " to recent searches.");
+        System.out.println("Saved " + cityNameInput + " to recent searches.");
     }
     
     @FXML
     private void handleSearch(ActionEvent event) {
+        TheMainSearchFunction(cityInput.getText().trim());
+    }
+
+
+
+    private void TheMainSearchFunction(String input){
         weatherObject defaulttt = new weatherObject();
-        cityNameString = cityInput.getText().trim();           
+        cityNameInput = input;           
 
         
-         //System.out.println("testing default constructor getLocation: \n"+defaulttt.getLocation(cityNameString).toString()+"\n");
+         //System.out.println("testing default constructor getLocation: \n"+defaulttt.getLocation(cityNameInput).toString()+"\n");
         
         
-         if (cityNameString.isEmpty() || !defaulttt.getLocation(cityNameString).toString().contains("elevation")) {
+         if (cityNameInput.isEmpty() || !defaulttt.getLocation(cityNameInput).toString().contains("elevation")) {
             showAlert("Invalid Entry", "Please enter a valid city name or ZIP code.");
             System.out.println("MAIN: Please enter a valid city name/zip");
             return;
         }
 
-        weatherObject currentWeatherSearch = new weatherObject(cityNameString);
+        weatherObject currentWeatherSearch = new weatherObject(cityNameInput);
         /*
         System.out.println(currentWeatherSearch.isCity);
         if(currentWeatherSearch.equals(null)){
@@ -357,9 +377,9 @@ public class WeatherApplicationController {
         System.out.println("testing city, state, country: "+currentWeatherSearch.coordCityName+", "+currentWeatherSearch.cityState+", "+currentWeatherSearch.cityCountry+"\n");
         System.out.println("testing current weather conditions for image double hashmap: "+currentWeatherSearch.parseWMOforImage(currentWeatherSearch.parseWMO(currentWeatherSearch.currentWeatherCode))+"\n");
 
-        String imagePath = "/image/Sun.png"; //eventually put into if & else if for determining photo
-        Image image = new Image(getClass().getResourceAsStream(imagePath));
-        weatherImage.setImage(image);
+
+
+      
         
         // Update UI elements with weather data for the new location
             //Left Pane
@@ -369,6 +389,7 @@ public class WeatherApplicationController {
         feelsLikeString= String.valueOf(currentWeatherSearch.currentApparentTemperature)+String.valueOf(currentWeatherSearch.currentWeatherUnits.get("apparent_temperature"));
         //Center Pane Top
         cityNameString= String.valueOf(currentWeatherSearch.coordCityName)+", "+currentWeatherSearch.cityState;
+        currentWeatherConditionsforImage = currentWeatherSearch.parseWMOforImage(currentWeatherSearch.parseWMO(currentWeatherSearch.currentWeatherCode));
         //Center Pane Hourly Precipitation
         //change this to WMO code
         precipitationString= String.valueOf(currentWeatherSearch.hourlyPrecipitationProbability.get(0))+String.valueOf(currentWeatherSearch.hourlyWeatherUnits.get("precipitation_probability")); //used for left pane as well
@@ -420,7 +441,57 @@ public class WeatherApplicationController {
         precipitation6String= String.valueOf(currentWeatherSearch.dailyPrecipitationProbability.get(13))+String.valueOf(currentWeatherSearch.dailyWeatherUnits.get("precipitation_probability_max"));
         sunrise6String= "Sunrise: "+currentWeatherSearch.parseTime(String.valueOf(currentWeatherSearch.dailySunrise.get(13)));
         sunset6String= "Sunset: "+currentWeatherSearch.parseTime(String.valueOf(currentWeatherSearch.dailySunset.get(13)));
-        updateWeatherInfo(cityNameString);
+
+        System.out.println("setting background image");
+        if(currentWeatherSearch.isDayOrNightBinary == 0){
+            System.out.println("it is night");
+            switch (currentWeatherConditionsforImage) {
+                case "Sunny":
+                    setImage(clearNight);
+                    System.out.println("it is clear\nsetting clear night image");
+                    break;
+                case "Cloudy":
+                    setImage(cloudNight);
+                    System.out.println("it is cloudy\nsetting cloudy night image");
+                    break;
+                case "Raining":
+                    setImage(rainNight);
+                    System.out.println("it is raining\nsetting rainy night image");
+                    break;
+                case "Snowing":
+                    setImage(snowNight);
+                    System.out.println("it is snowing\nsetting snowy night image");
+                    break;
+            }
+        }
+        else{
+            System.out.println("it is day");
+            switch (currentWeatherConditionsforImage) {
+                case "Sunny":
+                    setImage(clearDay);
+                    System.out.println("it is clear\nsetting clear day image");
+                    break;
+                case "Cloudy":
+                    setImage(cloudDay);
+                    System.out.println("it is cloudy\nsetting cloudy day image");
+                    break;
+                case "Raining":
+                    setImage(rainDay);
+                    System.out.println("it is raining\nsetting rainy day image");
+                    break;
+                case "Snowing":
+                    setImage(snowDay);
+                    System.out.println("it is snowing\nsetting snowy day image");
+                    break;
+            }
+        }
+
+        updateWeatherInfo(cityNameInput);
+    }
+
+    private void setImage(String imagePath){
+        Image image = new Image(getClass().getResourceAsStream(imagePath));
+        weatherImage.setImage(image);
     }
     
     private void showAlert(String title, String message) {
