@@ -66,6 +66,27 @@ public class weatherObject {
         return currentTimeConcatenated;
     }
 
+    public String parseTimeHourOnly(String dateTimeString){
+        String[] dateTimeArray = dateTimeString.split("T");
+        String currentTime24hr = dateTimeArray[1];
+        String currentHour24 = currentTime24hr.split(":")[0];
+        int tempHour24 = Integer.parseInt(currentHour24);
+        String currentMinutes = currentTime24hr.split(":")[1];
+        String currentHour12hr = String.valueOf(tempHour24%12);
+        if (tempHour24%12==0){
+            currentHour12hr = "12";
+        }
+        String amORpm;
+        if (tempHour24/12==0){
+            amORpm = " am";
+        }
+        else {
+            amORpm = " pm";
+        }
+        String currentHour = currentHour12hr+amORpm;
+        return currentHour;
+    }
+
     public String parseDate(String dateTimeString){
         String[] dateTimeArray = dateTimeString.split("T");
         String currentDate = dateTimeArray[0];
@@ -90,8 +111,8 @@ public class weatherObject {
     }
 
     public String parseDayOfWeek(String dateTimeString){
-        String[] dateTimeArray = dateTimeString.split("T");
-        String currentDate = dateTimeArray[0];
+        String dateTimeArray = dateTimeString;
+        String currentDate = dateTimeArray;
         String[] yearMonthDay = currentDate.split("-");
         int lastTwoOfYear = Integer.parseInt(yearMonthDay[0].replace("20",""));
         int fourthOfYear = lastTwoOfYear/4;
@@ -169,7 +190,7 @@ public class weatherObject {
         HashMap<String,String> wmoConditionsforImage = new HashMap<String, String>();
         wmoConditionsforImage.put("Clear sky", "Sunny");
         wmoConditionsforImage.put("Mainly clear", "Sunny");
-        wmoConditionsforImage.put("Partly cloudy", "Sunny");
+        wmoConditionsforImage.put("Partly cloudy", "Cloudy");
         wmoConditionsforImage.put("Overcast", "Cloudy");
         wmoConditionsforImage.put("Fog", "Cloudy");
         wmoConditionsforImage.put("Depositing rime fog", "Cloudy");
