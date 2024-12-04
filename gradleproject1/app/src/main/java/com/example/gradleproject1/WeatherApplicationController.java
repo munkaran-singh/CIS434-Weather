@@ -330,6 +330,8 @@ public class WeatherApplicationController {
     String dayFourString;
     String dayFiveString;
     String daySixString;
+
+    weatherObject defaultt = new weatherObject();
     
     
     @FXML
@@ -367,14 +369,13 @@ public class WeatherApplicationController {
 
 
     private void TheMainSearchFunction(String input){
-        weatherObject defaulttt = new weatherObject();
         cityNameInput = input;           
 
         
          //System.out.println("testing default constructor getLocation: \n"+defaulttt.getLocation(cityNameInput).toString()+"\n");
         
         
-         if (cityNameInput.isEmpty() || !defaulttt.getLocation(cityNameInput).toString().contains("elevation")) {
+         if (cityNameInput.isEmpty() || !defaultt.getLocation(cityNameInput).toString().contains("elevation")) {
             showAlert("Invalid Entry", "Please enter a valid city name or ZIP code.");
             System.out.println("MAIN: Please enter a valid city name/zip");
             return;
