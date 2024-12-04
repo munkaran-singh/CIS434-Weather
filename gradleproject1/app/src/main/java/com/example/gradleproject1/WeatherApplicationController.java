@@ -311,7 +311,7 @@ public class WeatherApplicationController {
     String cloudNight = "/image/cloudNight.png";
     String rainDay = "/image/rainDay.png";
     String rainNight = "/image/rainNight.png";
-    String snowDay = "/image/snowdaypng";
+    String snowDay = "/image/snowDay.png";
     String snowNight = "/image/snowNight.png";
     
     //Center Pane
@@ -336,12 +336,20 @@ public class WeatherApplicationController {
     private void handleSave(ActionEvent event) {
         if (cityNameInput == null || cityNameInput.isEmpty()) {
             System.out.println("No search result to save.");
+            showAlert("Invalid Save", "Please enter a city name or zip code.");
+            return;
+        }
+        if (!defaultt.getLocation(cityNameInput).toString().contains("elevation")){
+            System.out.println("MAIN: Please enter a valid city name/zip to save");
+            showAlert("Invalid Save", "Please enter a valid city name or ZIP code.");
             return;
         }
         if (!recentSearches.contains(cityNameInput)) {
             recentSearches.add(cityNameInput);
             initialize();
         }
+        System.out.println(recentSearches.toString());
+        
 
 
         if (recentSearches.size() > 10) {
